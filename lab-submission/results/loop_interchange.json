@@ -1,0 +1,10 @@
+{
+  "student_id": "30103172",
+  "N_salted": 1088,
+  "M_block": 544,
+  "median_time_naive_ijk_s": 0.14128640000012638,
+  "median_time_interchanged_ikj_s": 0.01508849999981976,
+  "speedup": 9.363846638288374,
+  "max_abs_diff": 0.0,
+  "numerically_consistent": true
+}

@@ -1,0 +1,24 @@
+{
+  "iterations_per_worker": 5000000,
+  "times_s": {
+    "unpadded": {
+      "1": 0.5383217000000968,
+      "2": 0.6428326999998717,
+      "4": 0.7884542000001602,
+      "8": 1.464643199999955
+    },
+    "padded": {
+      "1": 0.5413206999999147,
+      "2": 0.5627764000000752,
+      "4": 0.5815219999999499,
+      "8": 0.7418464999998378
+    },
+    "privatized": {
+      "1": 0.19953210000016952,
+      "2": 0.20435440000005656,
+      "4": 0.21749009999984992,
+      "8": 0.3010946000001695
+    }
+  },
+  "note": "unpadded e(P) should rise sharply with P (cache-line ping-pong, MESI invalidation traffic on the shared 64-byte line holding all 8 int64 counters); padded/privatized e(P) should stay low and flat."
+}

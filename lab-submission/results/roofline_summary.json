@@ -1,0 +1,9 @@
+{
+  "flops_per_point_per_sweep": 5,
+  "bytes_per_point_naive_traffic": 48,
+  "arithmetic_intensity_flops_per_byte": 0.10416666666666667,
+  "note": "AI ~0.10 FLOP/byte is far left on the roofline (typical CPU ridge point is 4-10+ FLOP/byte), so this naive stencil is Memory-Bandwidth Bound, not Compute Bound, regardless of core count -- consistent with sublinear strong-scaling observed above.",
+  "regime": "memory_bandwidth_bound",
+  "cpu_model": "AMD Ryzen 7 7735HS with Radeon Graphics",
+  "l3_cache": null
+}

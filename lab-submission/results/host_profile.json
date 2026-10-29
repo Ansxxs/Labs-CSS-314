@@ -1,0 +1,29 @@
+{
+  "cpu": {
+    "model_name": "AMD Ryzen 7 7735HS with Radeon Graphics",
+    "microarchitecture": "unknown",
+    "base_freq_mhz": 3201.0,
+    "physical_cores": 8,
+    "logical_threads": 16,
+    "smt_enabled": true,
+    "l1d_cache": null,
+    "l1i_cache": null,
+    "l2_cache": null,
+    "l3_cache": null,
+    "cache_line_size": 64,
+    "raw_powershell": "\n\nName                      : AMD Ryzen 7 7735HS with Radeon Graphics        \nNumberOfCores             : 8\nNumberOfLogicalProcessors : 16\nMaxClockSpeed             : 3201\n\n\n\n"
+  },
+  "os": {
+    "system": "Windows",
+    "release": "10",
+    "version": "10.0.22631"
+  },
+  "python": {
+    "implementation": "CPython",
+    "version": "3.11.5",
+    "build": [
+      "tags/v3.11.5:cce6ba9",
+      "Aug 24 2023 14:38:34"
+    ]
+  }
+}
