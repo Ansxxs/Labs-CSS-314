@@ -1,0 +1,43 @@
+"""
+exp_c_fixed.py -- Part 3: The Privatization Fix
+
+Golden Rule 8: Privatize before synchronizing. Each worker accumulates
+into a private local variable with zero locks, and the results are
+combined via a single reduction at the very end. This should restore
+near-linear speedup and collapse Karp-Flatt e(p) back down to <= 0.03.
+"""
+import time
+from multiprocessing import Pool
+
+
+def private_worker(iterations):
+    # Thread-local accumulation in private memory space (zero shared state)
+    local_sum = 0
+    for _ in range(iterations):
+        local_sum += 1
+    return local_sum
+
+
+def run_privatized(p, total_increments=20_000_000):
+    increments_per_worker = total_increments // p
+    tasks = [increments_per_worker] * p
+    t0 = time.perf_counter()
+    with Pool(processes=p) as pool:
+        results = pool.map(private_worker, tasks)
+    total = sum(results)  # Synchronize exactly ONCE at the end
+    t1 = time.perf_counter()
+    assert total == total_increments
+    return t1 - t0
+
+
+if __name__ == "__main__":
+    cores = [1, 2, 4]
+    runtimes = {p: run_privatized(p) for p in cores}
+    t1 = runtimes[1]
+    print(f"P=1 | Runtime={t1:.3f}s | Speedup=1.00x")
+    for p in [2, 4]:
+        tp = runtimes[p]
+        sp = t1 / tp
+        e = ((p * tp / t1) - 1.0) / (p - 1.0)
+        ep = sp / p * 100
+        print(f"P={p} | Runtime={tp:.3f}s | Speedup={sp:.2f}x | Efficiency={ep:.1f}% | Karp-Flatt e={e:.3f}")
